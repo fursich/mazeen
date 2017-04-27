@@ -1,0 +1,48 @@
+<div class='container'>
+  <div class='col-md-offset-2 col-md-8'>
+
+    <div class='title col-md-8'>
+      <h1>MaZeeeeen</h1>
+    </div>
+    <div class='col-md-8 panel panel-default'>
+      <table id='target-maze'>
+        <% @height.times do |h| %>
+          <tr class="row row-<%= "#{h}" %>">
+          <% @width.times do |w| %>
+            <td class="cell col-<%= "#{w}" %> <%= cell_type(h, w) %>" id="cell-<%= "#{h}-#{w}" %>">
+              <span class='<%= cell_icon(h, w) %>'>
+            </td>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class='col-md-4 control-box'>
+      <div class='col-md-12 execute-btn-box'>
+        <div class='form-group'>
+          <%= button_to "経路を算出", root_path, class: 'btn btn-success form-control' %>
+        </div>
+      </div>
+      <div class='col-md-12 config-box'>
+        <form class='form-inline'>
+          <div class='form-group'>
+            <%= form_tag root_path, method: :get do %>
+              <div class='input-group'>
+                <div class='input-group-addon'> <%= "高さ" %> </div>
+                <%= number_field_tag :height, @height, class: 'form-control' %>
+              </div>
+              <div class='input-group'>
+                <div class='input-group-addon'> <%= "幅　" %> </div>
+                <%= number_field_tag :width, @width, class: 'form-control' %>
+              </div>
+              <div class='size-change-btn'>
+                <%= submit_tag '変更', class: 'btn btn-block btn-info' %>
+              </div>
+            <% end %>
+          </div>
+        </form>
+      </div>
+  </div>
+  </div>
+</div>

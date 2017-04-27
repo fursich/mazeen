@@ -1,0 +1,45 @@
+
+.container {
+  .title {
+    margin: 10px 0px;
+    text-align: center;
+  }
+  .panel {
+    padding: 40px;
+  }
+  table#target-maze {
+    margin: 0 auto;
+
+    .cell-space {
+      background: #fff;
+    }
+    .cell-wall {
+      background: #666;
+    }
+    .cell-start {
+      background: #6F8;
+    }
+    .cell-goal {
+      background: #28F;
+    }
+    .cell {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border: 1px dotted #c4c2c4;
+      text-align: center;
+      font-size: 120%;
+    }
+  }
+  .control-box {
+    .execute-btn-box {
+      margin: 40px 5px;
+    }
+    .config-box {
+      margin: 20px 5px;
+      .size-change-btn {
+        margin-top: 10px;
+      }
+    }
+  }
+}
