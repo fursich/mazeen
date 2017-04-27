@@ -13,6 +13,9 @@
     .cell-space {
       background: #fff;
     }
+    .cell-path {
+      background: #8FE;
+    }
     .cell-wall {
       background: #666;
     }
@@ -32,7 +35,7 @@
     }
   }
   .control-box {
-    .execute-btn-box {
+    .seek-btn-box {
       margin: 40px 5px;
     }
     .config-box {

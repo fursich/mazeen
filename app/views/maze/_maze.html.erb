@@ -1,0 +1,11 @@
+<table id='target-maze'>
+  <% height.times do |h| %>
+    <tr class="row row-<%= "#{h}" %>">
+    <% width.times do |w| %>
+      <td class="cell col-<%= "#{w}" %> <%= cell_type(h, w, maze, start, goal) %>" id="cell-<%= "#{h}-#{w}" %>">
+        <span class='<%= cell_icon(h, w, maze, start, goal) %>'>
+      </td>
+    <% end %>
+    </tr>
+  <% end %>
+</table>

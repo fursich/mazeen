@@ -4,24 +4,14 @@
     <div class='title col-md-8'>
       <h1>MaZeeeeen</h1>
     </div>
-    <div class='col-md-8 panel panel-default'>
-      <table id='target-maze'>
-        <% @height.times do |h| %>
-          <tr class="row row-<%= "#{h}" %>">
-          <% @width.times do |w| %>
-            <td class="cell col-<%= "#{w}" %> <%= cell_type(h, w) %>" id="cell-<%= "#{h}-#{w}" %>">
-              <span class='<%= cell_icon(h, w) %>'>
-            </td>
-          <% end %>
-          </tr>
-        <% end %>
-      </table>
+    <div class='col-md-8 panel panel-default' id='maze-body'>
+      <%= render partial: 'maze/maze', locals: {height: @height, width: @width, maze: @maze, start: @start, goal: @goal} %>
     </div>
 
     <div class='col-md-4 control-box'>
-      <div class='col-md-12 execute-btn-box'>
+      <div class='col-md-12 seek-btn-box'>
         <div class='form-group'>
-          <%= button_to "経路を算出", root_path, class: 'btn btn-success form-control' %>
+          <%= button_to "経路を算出", maze_seek_path, class: 'btn btn-success form-control seek-btn', remote: true %>
         </div>
       </div>
       <div class='col-md-12 config-box'>
