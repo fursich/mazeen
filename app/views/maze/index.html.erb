@@ -1,17 +1,31 @@
 <div class='container'>
-  <div class='col-md-offset-2 col-md-8'>
+  <div class='col-md-offset-1 col-md-10'>
 
-    <div class='title col-md-8'>
+    <div class='title col-md-9'>
       <h1>MaZeeeeen</h1>
     </div>
     <div class='col-md-8 panel panel-default' id='maze-body'>
       <%= render partial: 'maze/maze', locals: {height: @height, width: @width, maze: @maze, start: @start, goal: @goal} %>
     </div>
 
-    <div class='col-md-4 control-box'>
+    <div class='col-md-3 control-box'>
       <div class='col-md-12 seek-btn-box'>
         <div class='form-group'>
           <%= button_to "経路を算出", maze_seek_path, class: 'btn btn-success form-control seek-btn', remote: true %>
+        </div>
+        <div class='form-group'>
+          <div class="radio" id='cost-algorithm-select'>
+            <label>
+              <input type="radio" name="cost-algorithm" id="cost-algorithm-1" value="min_distance" checked>
+              移動距離を最小にする
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="cost-algorithm" id="cost-algorithm-2" value="min_turns">
+              方向転換の回数を最小にする
+            </label>
+          </div>
         </div>
       </div>
       <div class='col-md-12 config-box'>
@@ -20,14 +34,14 @@
             <%= form_tag root_path, method: :get do %>
               <div class='input-group'>
                 <div class='input-group-addon'> <%= "高さ" %> </div>
-                <%= number_field_tag :height, @height, class: 'form-control' %>
+                <%= number_field_tag :height, @height, class: 'form-control', id: 'maze-height' %>
               </div>
               <div class='input-group'>
                 <div class='input-group-addon'> <%= "幅　" %> </div>
-                <%= number_field_tag :width, @width, class: 'form-control' %>
+                <%= number_field_tag :width, @width, class: 'form-control', id: 'maze-width' %>
               </div>
               <div class='size-change-btn'>
-                <%= submit_tag '変更', class: 'btn btn-block btn-info' %>
+                <%= submit_tag '変更', class: 'btn btn-block btn-info size-change-btn', remote: true %>
               </div>
             <% end %>
           </div>
