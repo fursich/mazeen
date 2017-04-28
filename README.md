@@ -4,9 +4,9 @@
 
 https://mazeen.herokuapp.com/
 
+![メイジン](https://raw.github.com/wiki/fursich/mazeen/images/mazeen.png)
 
-
-### 遊び方
+### メイジンの遊び方
 
 ポチポチとクリックすることで､迷路を作成して､探索ボタンを押すだけです｡
 
