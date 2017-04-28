@@ -1,24 +1,36 @@
-# README
+# Mazeen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+迷路を自動で解決するプログラム
 
-Things you may want to cover:
+https://mazeen.herokuapp.com/
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+### 遊び方
 
-* Database creation
+ポチポチとクリックすることで､迷路を作成して､探索ボタンを押すだけです｡
 
-* Database initialization
+最適解は2通りのルールで探索します｡
 
-* How to run the test suite
+1) 移動距離最小: スタートからゴールまでを最短距離で解く
 
-* Services (job queues, cache servers, search engines, etc.)
+2) ターン数最小: 方向転換がなるべく少ない経路で解く
 
-* Deployment instructions
+見つからない場合は画面が赤くフラッシュします｡
 
-* ...
+### 探索法
+
+迷路を解くアルゴリズムには色々とありますが､今回はA*(A-star)法を使ってrubyで迷路を解くコードを実装してみました｡
+
+(参考にしたサイト)
+http://qiita.com/2dgames_jp/items/f29e915357c1decbc4b7
+
+迷路の解決はサーバー側で処理し､迷路の状態はクライアント側でjsを使って管理しています｡
+迷路の状態やアルゴリズムの指定をajaxでサーバ側に送信し､解決した結果をjsonで返すという処理をしています｡
+
+### 悩んだところ
+
+フロントエンド側が状態を保持する(迷路の形状を保持する)ため､いわゆるrailsの標準的なMVCパターンに落とし込めないところで少し悩みました｡
+
+現在の規模だとマニュアル的にjsコードを書いておくことで､DOMの状態管理をマニュアル的に行える範囲ですが､AngularやReactといった､フロントエンド側でのMVCをハンドリングできるフレームーワークの必要性を今回はじめて肌で痛感しました｡
+次の課題としたいと思います｡
